@@ -18,26 +18,29 @@ public:
         int sum = 0; // Sum in integer symbols
         int strSize = s.size(); // integer that stores the number of characters in the input string
 
-        for (int i = 0; i < strSize; i++) {
+        for (int i = 0; i < strSize; i++) { // Overall for loop that iterates through each character in the input string
+            
+            bool flag = false; // flag to determine if the string contains a sub pair at index [i] and [i + 1]
+
+            // These strings contain the character at [i] and the pair at [i, i + 1]
             string temp1 = "";
             string temp2 = "";
-            bool flag = false;
             temp1 = s[i]; temp2 = temp1 + s[i + 1]; // There's probably a better way to concatenate two characters from the input string
 
-            for (int j = 0; j < 6; j++) {
+            for (int j = 0; j < 6; j++) { // This loop iterates through the 6 possible subtraction pairs and checks them against the temp strings
 
-                if (pairs[j] == temp2)
+                if (pairs[j] == temp2) // If the pair at [j] is the same as our pair at [i]...
                 {
-                    sum = sum + subCase[pairs[j]];
-                    flag = true;
-                    i++;
-                    break;
+                    sum = sum + subCase[pairs[j]]; // ...Sum the pair value stored in the subCase map
+                    flag = true; // ...and set the flag to true
+                    i++; // ...and iterate the overall loop to move to the next character after the pair
+                    break; // ...and break out of the case loop so we don't make anymore unnecessary checks
                 }
             }
                 
-            if (!flag)
+            if (!flag) // Otherwise if the flag is still false...
             {
-                sum = sum + romans[temp1];
+                sum = sum + romans[temp1]; // ...add the character value stored in the romans map to the sum
             }
         }
 

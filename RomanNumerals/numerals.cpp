@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
     
-    string test = "MMXXII";
+    string test = "III";
     Solution solution;
     solution.romanToInt(test);
 }
